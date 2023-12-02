@@ -24,6 +24,7 @@ app.post("/users", async (req, res) => {
   await prisma.user.create({
     data: {
       name: data.name,
+      email: data.email,
     },
   });
   return res.sendStatus(201);
