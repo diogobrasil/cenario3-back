@@ -12,14 +12,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //rota que lista todos os usuários cadastrados
-app.get("/user", async (req, res) => {
+app.get("/users", async (req, res) => {
   const users = await prisma.user.findMany();
   if (users.length > 0) return res.status(200).send(users);
   return res.send("Não há usuários encontrados.");
 });
 
 //rota que cadastra um usuário
-app.post("/user", async (req, res) => {
+app.post("/users", async (req, res) => {
   const data = req.body;
   await prisma.user.create({
     data: {
@@ -31,7 +31,7 @@ app.post("/user", async (req, res) => {
 });
 
 //rota que apaga um usuário, passando o id
-app.delete("/user/:id", async (req, res) => {
+app.delete("/users/:id", async (req, res) => {
   try {
     const id = req.params.id;
     // Delete o usuário do banco de dados aqui
@@ -48,7 +48,7 @@ app.delete("/user/:id", async (req, res) => {
 });
 
 //rota que atualiza um usuário, pelo id
-app.put("/user/:id", async (req, res) => {
+app.put("/users/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const userData = req.body;
@@ -67,7 +67,7 @@ app.put("/user/:id", async (req, res) => {
 });
 
 //rota que lista usuários que contenham o nome específico
-app.get("/user/:name", async (req, res) => {
+app.get("/users/:name", async (req, res) => {
   const name = req.params.name;
   const user = await prisma.user.findMany({
     where: {
@@ -80,7 +80,7 @@ app.get("/user/:name", async (req, res) => {
 });
 
 //rota que lista um usuário pelo id
-app.get("/user/:id", async (req, res) => {
+app.get("/users/:id", async (req, res) => {
   try {
     const id = req.params.id;
     // Busque o usuário do banco de dados aqui
