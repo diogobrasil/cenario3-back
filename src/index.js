@@ -19,7 +19,7 @@ app.get("/users", async (req, res) => {
 });
 
 //rota que cadastra um usuário
-app.post("/user", async (req, res) => {
+app.post("/users", async (req, res) => {
   const data = req.body;
   await prisma.user.create({
     data: {
@@ -30,7 +30,7 @@ app.post("/user", async (req, res) => {
 });
 
 //rota que apaga um usuário, passando o id
-app.delete("/user/:id", async (req, res) => {
+app.delete("/users/:id", async (req, res) => {
   try {
     const id = req.params.id;
     // Delete o usuário do banco de dados aqui
@@ -47,7 +47,7 @@ app.delete("/user/:id", async (req, res) => {
 });
 
 //rota que atualiza um usuário, pelo id
-app.put("/user/:id", async (req, res) => {
+app.put("/users/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const userData = req.body;
@@ -79,7 +79,7 @@ app.get("/users/:name", async (req, res) => {
 });
 
 //rota que lista um usuário pelo id
-app.get("/user/:id", async (req, res) => {
+app.get("/users/:id", async (req, res) => {
   try {
     const id = req.params.id;
     // Busque o usuário do banco de dados aqui
