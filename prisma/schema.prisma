@@ -14,5 +14,5 @@ model User {
   name  String
   email String
 
-  @@map("users")
+  //@@map("users")
 }
