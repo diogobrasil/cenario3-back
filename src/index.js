@@ -15,7 +15,7 @@ app.use(cors());
 app.get("/users", async (req, res) => {
   const users = await prisma.user.findMany();
   if (users.length > 0) return res.status(200).send(users);
-  return res.send("Não há usuários encontrados.");
+  return res.status(404).send("Não há usuários encontrados.");
 });
 
 //rota que cadastra um usuário
